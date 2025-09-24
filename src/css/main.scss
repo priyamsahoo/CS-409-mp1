@@ -1,1 +1,459 @@
-/* Your SCSS here. */
+// -------------------------------
+// Variables
+// -------------------------------
+$brand: #13294B; // UIUC navy
+$accent: #FF5F05; // Illini orange
+$ink: #0f1a2c;
+$muted: #6c7a89;
+$bg: #f7f9fc;
+$white: #ffffff;
+
+$maxw: 1160px;
+$radius: 16px;
+$shadow: 0 12px 30px rgba(0,0,0,0.08);
+
+$nav-height-large: 92px;
+$nav-height-small: 64px;
+
+// -------------------------------
+// Mixins
+// -------------------------------
+@mixin container {
+  width: 100%;
+  max-width: $maxw;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@mixin btn($bgc, $fg) {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: $bgc;
+  color: $fg;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  &:hover { transform: translateY(-1px); }
+  i { font-size: 1.05rem; }
+}
+
+// -------------------------------
+// Keyframes (CSS3 animations)
+// -------------------------------
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-6px); }
+}
+
+// HERO reel scroll animation (two identical groups -> move by 50%)
+@keyframes reel-scroll {
+  to { transform: translateX(-50%); }
+}
+
+// -------------------------------
+// Base / Global
+// -------------------------------
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: $ink;
+  margin: 0;
+  background: $bg;
+}
+
+.container { @include container; }
+
+.section-title {
+  font-size: clamp(1.4rem, calc(1.5vw + 1rem), 2rem);
+  font-weight: 900;
+  text-align: center;
+  margin: 0 0 24px;
+  color: $brand;
+  i { color: $accent; margin-right: .4rem; }
+}
+
+.stripe {
+  width: 100%;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Global buttons
+.btn { cursor: pointer; }
+.btn.primary { @include btn($accent, $white); }
+.btn.ghost   { @include btn(transparent, $ink); border-color: rgba($ink,.2); }
+
+// -------------------------------
+// Navbar (sticky, resizable, progress bar)
+// -------------------------------
+.site-header { position: sticky; top: 0; z-index: 1000; }
+
+.navbar {
+  background: rgba($white, 0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: height .25s ease, padding .25s ease;
+  position: relative;
+  height: $nav-height-large;
+
+  &.shrink { height: $nav-height-small; }
+
+  .nav-inner {
+    @include container;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .brand {
+    font-weight: 900;
+    font-size: clamp(1.1rem, calc(1.2vw + .8rem), 1.6rem);
+    color: $brand;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    .brand-icon { color: $accent; }
+  }
+
+  .nav-links {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; gap: clamp(10px, 2vw, 24px);
+    a {
+      color: $ink; text-decoration: none; font-weight: 700;
+      font-size: clamp(.9rem, calc(.7vw + .7rem), 1.05rem);
+      padding: 8px 10px; border-radius: 10px; transition: background .2s ease, color .2s ease;
+      &:hover { background: rgba($brand, .06); }
+      &.active { color: $accent; }
+    }
+  }
+
+  // Navbar social icons (compact)
+  .nav-socials {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1.2vw, 12px);
+
+    .nav-social {
+      width: 36px; height: 36px;
+      display: grid; place-items: center;
+      border-radius: 999px;
+      background: $white;
+      border: 1px solid #e8eefb;
+      color: $brand;
+      text-decoration: none;
+      box-shadow: $shadow;
+      transition: transform .15s ease, background .2s ease, color .2s ease;
+      &:hover { transform: translateY(-1px); background: $brand; color: $white; }
+    }
+  }
+
+  .progress {
+    position: absolute; left: 0; bottom: 0;
+    height: 4px; width: 0%;
+    background: linear-gradient(90deg, $accent, #ffa76b);
+    transition: width .08s linear;
+  }
+}
+
+// -------------------------------
+// Hero with borderless image REEL
+// -------------------------------
+.hero {
+  background: linear-gradient(180deg, #fff, #f1f6ff);
+  min-height: calc(100vh - #{$nav-height-large});
+
+  .hero-content {
+    text-align: center;
+    animation: fadeUp .6s ease both .05s;
+    max-width: 1000px; padding: 0 16px;
+  }
+
+  .title {
+    font-size: clamp(2rem, calc(4vw + 1rem), 4rem);
+    line-height: 1.05;
+    color: $brand;
+    margin: 0 0 12px;
+  }
+
+  .subtitle {
+    font-size: clamp(1rem, calc(1.2vw + .6rem), 1.3rem);
+    color: $muted;
+    margin: 0 0 24px;
+  }
+
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  /* --- Reel styles --- */
+  .hero-reel {
+    --gap: 12px;
+    --tile-w: clamp(180px, 28vw, 280px);
+    --tile-h: clamp(120px, 18vw, 180px);
+
+    margin-top: 22px;
+    width: 100%;
+    max-width: 1000px;
+    overflow: hidden;
+    /* Subtle edge fade; safe fallback if mask not supported */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+
+    .reel-track {
+      display: flex;
+      gap: var(--gap);
+      width: max-content; /* allow intrinsic width for smooth translate */
+      animation: reel-scroll 30s linear infinite;
+    }
+    .reel {
+      display: flex;
+      gap: var(--gap);
+    }
+    img {
+      flex: 0 0 var(--tile-w);
+      width: var(--tile-w);
+      height: var(--tile-h);
+      object-fit: cover;
+      border: none;         /* borderless images */
+      border-radius: 0;     /* no rounded corners on images */
+      filter: saturate(105%);
+      user-select: none;
+      pointer-events: none; /* purely visual; keeps hover from pausing accidental selections */
+    }
+
+    /* Pause animation on hover for a closer look */
+    &:hover .reel-track { animation-play-state: paused; }
+  }
+}
+
+// -------------------------------
+// Dangers: reused as multi-column sections
+// -------------------------------
+.dangers {
+  background: $white;
+
+  .columns {
+    column-gap: 24px;
+    columns: 3 280px; // multi-column, responsive
+
+    .card {
+      break-inside: avoid;
+      background: #fbfcff;
+      border: 1px solid #e8eefb;
+      border-radius: $radius;
+      box-shadow: $shadow;
+      padding: 20px;
+      margin: 0 0 24px;
+
+      h3 { margin: 0 0 8px; color: $brand; i { color: $accent; margin-right: .4rem; } }
+      p { margin: 0; color: $ink; }
+    }
+  }
+}
+
+// -------------------------------
+// Carousel (landmarks)
+// -------------------------------
+.carousel-section { background: #f9fbff; }
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  background: $white;
+
+  .carousel-track-wrapper { overflow: hidden; }
+  .carousel-track {
+    list-style: none; margin: 0; padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    transition: transform .35s ease;
+  }
+
+  .slide {
+    padding: clamp(28px, 5vw, 48px);
+    .slide-inner {
+      max-width: 720px; margin: 0 auto; text-align: center;
+      h3 { margin: 0 0 8px; color: $brand; font-size: clamp(1.2rem, calc(1.3vw + .8rem), 1.8rem); }
+      p  { margin: 0; color: $muted; font-size: 1.05rem; }
+    }
+  }
+
+  .carousel-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 44px; height: 44px; border-radius: 999px;
+    border: none; cursor: pointer; background: rgba($brand, .85); color: $white;
+    display: grid; place-items: center; transition: opacity .2s ease, transform .15s ease;
+    &:hover { transform: translateY(-50%) scale(1.05); }
+    &.prev { left: 12px; }
+    &.next { right: 12px; }
+  }
+}
+
+// -------------------------------
+// Parallax (fixed background image)
+// -------------------------------
+.parallax {
+  padding: 0;
+  min-height: 60vh;
+  background-image: url('../assets/quad-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  .parallax-overlay {
+    background: linear-gradient(180deg, rgba(19,41,75,.5), rgba(19,41,75,.6));
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center; justify-content: center;
+    text-align: center;
+    color: $white;
+
+    .center-vert { padding: 80px 16px; }
+    .parallax-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin: 0 0 8px;
+      letter-spacing: .5px;
+    }
+    .parallax-sub { margin: 0; opacity: .95; }
+  }
+}
+
+// -------------------------------
+// Watch / Video
+// -------------------------------
+.training {
+  .video-wrap {
+    border-radius: $radius;
+    overflow: hidden;
+    box-shadow: $shadow;
+    background: #000;
+    max-width: 920px;
+    margin: 0 auto 16px;
+    video { display: block; width: 100%; height: auto; }
+  }
+  .note { text-align: center; color: $muted; margin-bottom: 16px; }
+
+  /* Center the Quad 101 button in the Watch section */
+  .btn.primary {
+    display: block;
+    width: fit-content;
+    margin: 14px auto 0; // top space + centered
+  }
+}
+
+// -------------------------------
+// FAQ Grid
+// -------------------------------
+.faq {
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .faq-card {
+    background: $white;
+    border: 1px solid #e8eefb;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    padding: 20px;
+    h3 { margin: 0 0 8px; color: $brand; }
+    p { margin: 0; color: $ink; }
+  }
+}
+
+// -------------------------------
+// Contact + Social icons
+// -------------------------------
+.contact {
+  .lead { text-align: center; color: $muted; margin: 0 0 16px; }
+  .socials {
+    display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+    .social {
+      width: 44px; height: 44px; display: grid; place-items: center;
+      background: $white; border: 1px solid #e8eefb; border-radius: 999px;
+      color: $brand; text-decoration: none; box-shadow: $shadow;
+      transition: transform .15s ease, color .2s ease, background .2s ease;
+      &:hover { transform: translateY(-2px); background: $brand; color: $white; }
+    }
+  }
+}
+
+// -------------------------------
+// Footer
+// -------------------------------
+.footer {
+  background: $brand;
+  color: $white;
+  padding: 28px 0;
+  .container {
+    @include container;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    p { margin: 0; }
+    .back-top {
+      color: #cfe0ff; text-decoration: none; font-weight: 700;
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
+// -------------------------------
+// Modal
+// -------------------------------
+.modal {
+  position: fixed; inset: 0;
+  display: none;
+  align-items: center; justify-content: center;
+  background: rgba(0,0,0,.4);
+  padding: 20px;
+  &.open { display: flex; animation: fadeUp .2s ease both; }
+
+  .modal-content {
+    background: $white; color: $ink; width: min(720px, 92vw);
+    border-radius: $radius; box-shadow: $shadow; padding: 24px;
+    position: relative;
+    h3 { margin: 0 0 12px; color: $brand; }
+    .modal-list { margin: 0; padding-left: 18px; }
+    .modal-close {
+      position: absolute; right: 10px; top: 10px;
+      width: 38px; height: 38px; border-radius: 999px;
+      border: 1px solid #e8eefb; background: $white; color: $ink;
+      display: grid; place-items: center; cursor: pointer;
+    }
+  }
+}
+
+// -------------------------------
+// Responsive targets
+// -------------------------------
+@media (max-width: 1180px) {
+  .navbar .nav-inner { gap: 10px; }
+}
+@media (max-width: 1024px) {
+  .faq .faq-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .navbar .nav-socials { display: none; } // hide socials if tight
+}
+@media (max-width: 768px) {
+  .navbar .nav-inner { flex-wrap: wrap; }
+  .navbar .nav-links { flex-wrap: wrap; justify-content: center; }
+  .stripe { padding: 64px 0; }
+  .faq .faq-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .navbar .nav-links a { padding: 6px 8px; }
+  .hero .cta-row { flex-direction: column; }
+}

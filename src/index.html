@@ -1,13 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MP1</title>
-    </head>
-    <body>
-        <h1>Hello World! Welcome to MP1!</h1>
-        <img src="assets/image.jpg">
-    </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About the UIUC Quad</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <!-- <link rel="stylesheet" href="css/main.css"/> -->
+</head>
+<body>
+
+  <!-- Sticky, resizable navbar with progress indicator -->
+  <header id="top" class="site-header">
+    <nav id="navbar" class="navbar">
+      <div class="nav-inner">
+        <a href="#hero" class="brand">
+          <span class="brand-icon"><i class="fa-solid fa-landmark"></i></span>
+          Quad Guide
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#hero" data-link>Home</a></li>
+          <li><a href="#history" data-link>History</a></li>
+          <li><a href="#landmarks" data-link>Landmarks</a></li>
+          <li><a href="#parallax" data-link>The Quad</a></li>
+          <li><a href="#watch" data-link>Watch</a></li>
+          <li><a href="#etiquette" data-link>Etiquette</a></li>
+          <li><a href="#survival" data-link>Survival</a></li>
+          <li><a href="#contact" data-link>Share</a></li>
+        </ul>
+
+      </div>
+      <div id="progress" class="progress"></div>
+    </nav>
+  </header>
+
+  <!-- Section 1: Hero (centered) -->
+  <section id="hero" class="stripe hero">
+    <div class="hero-content">
+      <h1 class="title">The Quad at Illinois</h1>
+      <p class="subtitle">
+        Brick paths, open sky, and a daily parade of Illini energy.
+      </p>
+      <div class="cta-row">
+        <a href="#history" class="btn primary"><i class="fa-solid fa-clock-rotate-left"></i> Start with History</a>
+        <button class="btn ghost" data-open-modal="#loreModal"><i class="fa-solid fa-book"></i> Quad Lore</button>
+      </div>
+
+      <!-- HERO REEL: borderless, looping image strip (replace sources with more assets as desired) -->
+      <div class="hero-reel" aria-label="Quad photo reel">
+        <div class="reel-track">
+          <div class="reel">
+            <img src="assets/quad1.jpeg" alt="UIUC Quad view 1">
+            <img src="assets/quad2.jpeg" alt="UIUC Quad view 2">
+            <img src="assets/quad3.jpeg" alt="UIUC Quad view 3">
+            <img src="assets/quad4.jpeg" alt="UIUC Quad view 4">
+            <img src="assets/quad5.jpeg" alt="UIUC Quad view 5">
+            <img src="assets/quad6.jpeg" alt="UIUC Quad view 6">
+            <img src="assets/quad7.jpeg" alt="UIUC Quad view 7">
+            <img src="assets/quad8.jpeg" alt="UIUC Quad view 8">
+            <img src="assets/quad9.jpeg" alt="UIUC Quad view 9">
+            <img src="assets/quad10.jpeg" alt="UIUC Quad view 10">
+            <img src="assets/quad11.jpeg" alt="UIUC Quad view 10">
+          </div>
+
+          <div class="reel">
+            <img src="assets/quad1.jpeg" alt="UIUC Quad view 1">
+            <img src="assets/quad2.jpeg" alt="UIUC Quad view 2">
+            <img src="assets/quad3.jpeg" alt="UIUC Quad view 3">
+            <img src="assets/quad4.jpeg" alt="UIUC Quad view 4">
+            <img src="assets/quad5.jpeg" alt="UIUC Quad view 5">
+            <img src="assets/quad6.jpeg" alt="UIUC Quad view 6">
+            <img src="assets/quad7.jpeg" alt="UIUC Quad view 7">
+            <img src="assets/quad8.jpeg" alt="UIUC Quad view 8">
+            <img src="assets/quad9.jpeg" alt="UIUC Quad view 9">
+            <img src="assets/quad10.jpeg" alt="UIUC Quad view 10">
+            <img src="assets/quad11.jpeg" alt="UIUC Quad view 10">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: History & Quick Facts (multi-column layout) -->
+  <section id="history" class="stripe dangers">
+    <div class="container">
+      <h2 class="section-title"><i class="fa-solid fa-timeline"></i> A Short History of a Long Walk</h2>
+      <div class="columns">
+        <article class="card">
+          <h3><i class="fa-solid fa-seedling"></i> Origins</h3>
+          <p>The Quad grew with the university, framed by academic buildings, planted with intentional sightlines, and designed for “accidental” run-ins that became clubs, projects, and lifelong group chats.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-building-columns"></i> North & South Anchors</h3>
+          <p>Illini Union to the north; Foellinger Auditorium to the south. One for coffee and meetings, one for lectures and concerts. Balanced like a perfectly curved brick path.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-people-group"></i> Traditions</h3>
+          <p>Quad Day, sunrise photos, impromptu a cappella sets, and the annual “first warm day” where everyone suddenly remembers sunlight is free.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-tree"></i> Seasons</h3>
+          <p>Fall crunch, winter hush, spring blossoms, summer stillness. Same bricks, different stories.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-graduation-cap"></i> Commencement Moments</h3>
+          <p>Gowns, families, and photos that somehow all happen in the same five square feet, right where the light hits just right.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-feather"></i> Little Details</h3>
+          <p>Benches with memories, plaques you’ll notice in week 12, and paths that mysteriously match how people actually walk.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Landmarks Carousel -->
+  <section id="landmarks" class="stripe carousel-section">
+    <div class="container">
+      <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Landmarks You’ll Name-Drop</h2>
+      <div class="carousel" aria-roledescription="carousel">
+        <button class="carousel-btn prev" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="carousel-track-wrapper">
+          <ul class="carousel-track">
+            <li class="slide current">
+              <div class="slide-inner">
+                <h3>Illini Union</h3>
+                <p>Living room of campus. Study spots, meeting rooms, and the place you’ll text “I’m here” while still five minutes away.</p>
+              </div>
+            </li>
+            <li class="slide">
+              <div class="slide-inner">
+                <h3>Foellinger Auditorium</h3>
+                <p>Big lectures, bigger acoustics. Also known as “the backdrop to half your photo roll.”</p>
+              </div>
+            </li>
+            <li class="slide">
+              <div class="slide-inner">
+                <h3>Alma Mater</h3>
+                <p>A quick walk from the Quad at Green & Wright. Meet here, take a photo, resist the urge to climb anything bronze.</p>
+              </div>
+            </li>
+            <li class="slide">
+              <div class="slide-inner">
+                <h3>Lincoln Hall & English Building</h3>
+                <p>West and east borders of Quad lore, lecture halls, stories, and the occasional ghost (of midterms past).</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <button class="carousel-btn next" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Fixed background / Parallax -->
+  <section id="parallax" class="stripe parallax">
+    <div class="parallax-overlay">
+      <div class="center-vert">
+        <h2 class="parallax-title">The Quad</h2>
+        <p class="parallax-sub">Study corridor. Photo studio. Shortcut that isn’t. Welcome home.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Watch (HTML5 video) -->
+  <section id="watch" class="stripe training">
+    <div class="container">
+      <h2 class="section-title"><i class="fa-solid fa-video"></i> Watch: A Walk Through the Quad</h2>
+      <div class="video-wrap">
+        <video controls poster="assets/poster.jpg">
+          <source src="assets/quad-training.mp4" type="video/mp4"/>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="note">
+        Quad 101, live: the
+        <a href="https://youtu.be/g_973tJqDe8" target="_blank" rel="noopener">24/7 Quad Cam</a> — your real-time intro to campus vibes.
+      </div>
+      <button class="btn primary" data-open-modal="#quadIntroModal">
+        <i class="fa-solid fa-landmark"></i> Quad 101: Micro-Tours & Moments
+      </button>
+    </div>
+  </section>
+
+  <!-- Section 6: FAQ -->
+  <section id="etiquette" class="stripe faq">
+    <div class="container">
+      <h2 class="section-title"><i class="fa-solid fa-circle-question"></i> FAQs</h2>
+      <div class="faq-grid">
+        <div class="faq-card">
+          <h3>Can I walk on the grass?</h3>
+          <p>Yes—unless it’s soggy, taped off, or a spontaneous nap has broken out. Use paths when it helps the lawns recover.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Best time for photos?</h3>
+          <p>Golden hour. Or any hour with clouds. Bonus: early mornings feel like you have the place to yourself.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Where do people hang out?</h3>
+          <p>Union side steps, shaded trees, and wherever a friend texts “I’m here” (they aren’t). Bring water.</p>
+        </div>
+        <div class="faq-card">
+          <h3>What should I bring?</h3>
+          <p>Layers, a tiny notebook, and the courage to say hi to someone new. That’s how clubs start.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Survival Guide (light, funny) -->
+  <section id="survival" class="stripe dangers">
+    <div class="container">
+      <h2 class="section-title"><i class="fa-solid fa-helmet-safety"></i> Lighthearted Quad Survival Guide</h2>
+      <div class="columns">
+        <article class="card">
+          <h3><i class="fa-solid fa-shoe-prints"></i> Shoes vs. Puddles</h3>
+          <p>After a rain, some bricks become “reflecting pools.” Plot your route like a tiny expedition.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-mug-hot"></i> Coffee Logistics</h3>
+          <p>Plan caffeine stops north (Union) and south (after class). Hydration still counts if it’s iced.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-sun"></i> First Warm Day Protocol</h3>
+          <p>Everyone migrates to sunlight. Bring a blanket, pretend to read, accidentally join three clubs.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-route"></i> Five-Minute Rule</h3>
+          <p>If your friend says “five minutes,” you have time to take a lap and discover a new favorite corner.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-camera-retro"></i> Photo Courtesy</h3>
+          <p>Pause one beat for the snapshot. They’ll do the same when you nail the cap-toss boomerang.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-cloud-sun-rain"></i> Weather Plot Twist</h3>
+          <p>Forecasts here are more like suggestions. Pack optimism and a light jacket.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Share / Social -->
+  <section id="contact" class="stripe contact">
+    <div class="container">
+      <h2 class="section-title"><i class="fa-solid fa-message"></i> Share Your Quad Story</h2>
+      <p class="lead">Favorite bench? Hidden shade spot? A meet-cute with a goose?</p>
+      <div class="socials">
+        <a aria-label="Instagram" href="https://www.instagram.com/illinois1867/?hl=en" target="_blank" class="social"><i class="fa-brands fa-instagram"></i></a>
+        <a aria-label="X (Twitter)" href="https://x.com/UofIllinois?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" class="social"><i class="fa-brands fa-x-twitter"></i></a>
+        <a aria-label="LinkedIn" href="https://www.linkedin.com/school/university-of-illinois-urbana-champaign/" target="_blank" class="social"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="stripe footer">
+    <div class="container">
+      <p>© <span id="year"></span> About the UIUC Quad · Brick by brick.</p>
+      <a class="back-top" href="#"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
+    </div>
+  </footer>
+
+  <!-- Modal: Quad Lore (myths, fun facts, gentle truths) -->
+  <div id="loreModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="loreTitle">
+    <div class="modal-content">
+      <button class="modal-close" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 id="loreTitle"><i class="fa-solid fa-book-open"></i> Quad Lore</h3>
+      <ul class="modal-list">
+        <li><strong>Altgeld Chimes Pause:</strong> When the noon melodies drift over the Quad, everyone walks 10% slower and smiles 30% more. Unwritten rule.</li>
+        <li><strong>“At the Union” Coordinates:</strong> This phrase has a ±100-meter radius. If someone says they’re “here,” they’re probably nearby and emotionally on time.</li>
+        <li><strong>First Warm Day Treaty:</strong> By tradition, syllabi yield to sunlight. Bring a blanket; productivity becomes “reading adjacent.”</li>
+        <li><strong>Foellinger Echo:</strong> Clap once facing the steps. If you hear it bounce, congratulations—you’ve accidentally started a tour.</li>
+        <li><strong>Desire Paths Prophecy:</strong> The little dirt shortcuts predict future brickwork. The Quad listens, eventually.</li>
+        <li><strong>Lake Illini (Seasonal):</strong> After rain, certain bricks become reflective art installations. Locals call them “choose-your-own-adventure tiles.”</li>
+        <li><strong>Photo Orbit:</strong> Senior-photo gravity spikes in April. Keep a respectful distance, then step in for your turn like you own the sunset.</li>
+        <li><strong>Five-Minute Myth:</strong> “Five minutes out” means “I’m admiring the trees and will be there when destiny allows.” Acceptable on the Quad only.</li>
+        <li><strong>Eternal Flame Whisper:</strong> A quiet spot near the Union has a legend about lasting friendships. Belief is optional; good vibes are not.</li>
+        <li><strong>Morning Ownership:</strong> Walk the Quad before 8 a.m. and it feels like your private campus. Coffee optional, awe required.</li>
+        <li><strong>Finals Week Hush:</strong> The quiet is different then—you can hear pages turning from Lincoln to English. Even the breeze studies.</li>
+        <li><strong>Meet-Cute Probability:</strong> Chance encounters on the center path are empirically higher. The sample size is… everyone.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal: Quad 101 (micro-tours, moments, study setup, meet-ups) -->
+  <div id="quadIntroModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="quadIntroTitle">
+    <div class="modal-content">
+      <button class="modal-close" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 id="quadIntroTitle"><i class="fa-solid fa-shoe-prints"></i> Quad 101: Micro-Tours & Moments</h3>
+
+      <h4>Pick a Micro-Tour</h4>
+      <ol class="modal-list">
+        <li><strong>10-Minute Reset:</strong> Start at the Union’s front doors → stroll the center walk halfway → pause for a minute → return along the east path.</li>
+        <li><strong>20-Minute Scenic:</strong> From Foellinger’s steps → trace the perimeter clockwise → cut across the middle for a symmetry finish.</li>
+        <li><strong>30-Minute Golden Hour:</strong> Begin south → wander up the west path → swing by Alma → drift back down the east path as the dome warms up.</li>
+      </ol>
+
+      <h4>Moments Worth Catching</h4>
+      <ul class="modal-list">
+        <li><strong>Blue-hour windows:</strong> The Union lights up like film stock; bricks look cinematic.</li>
+        <li><strong>Leaf tunnel:</strong> On breezy fall afternoons, the east walkway turns into slow-motion confetti.</li>
+        <li><strong>First-snow hush:</strong> Footsteps become percussion; even loud jackets whisper.</li>
+        <li><strong>After-storm mirrors:</strong> Low puddles reflect the Foellinger dome if you crouch to eye level.</li>
+      </ul>
+
+      <h4>Outdoor Study Setup</h4>
+      <ul class="modal-list">
+        <li><strong>Wind check:</strong> Sit with your back to a building; your notebook will thank you.</li>
+        <li><strong>Shade strategy:</strong> Mid-afternoon shade drifts west → east—move once, stay longer.</li>
+        <li><strong>Low-tech kit:</strong> Binder clip for pages, hard-cover notebook as a lap desk, a pen that isn’t precious.</li>
+      </ul>
+
+      <h4>Meet-Up Spots that Age Well</h4>
+      <ul class="modal-list">
+        <li><strong>Union patio edge:</strong> Easy sightlines and quick hand-offs.</li>
+        <li><strong>Foellinger lawn border:</strong> Open space, simple regroup after class.</li>
+        <li><strong>Mid-Quad crossroads:</strong> Agree on “center path, facing south”—you’ll see each other coming a block away.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script type="module" src="./index.js"></script>
+</body>
 </html>
